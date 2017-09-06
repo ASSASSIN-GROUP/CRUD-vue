@@ -61,6 +61,9 @@
             hideForm(){
                 this.isEditing = false;
             },
+            completedTodo(todo) {
+                this.$emit('complete-todo', todo);
+            },
         },
     };
 </script>
