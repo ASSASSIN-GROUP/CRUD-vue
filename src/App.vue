@@ -1,42 +1,50 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <todo-list v-bind:todos="todos"></todo-list>
-  </div>
+    <div id="app">
+        <img src="./assets/logo.png">
+        <todo-list v-bind:todos="todos"></todo-list>
+        <create-todo v-on:add-todo ="addTodo">
+    </div>
 </template>
 
 <script>
 import TodoList from './components/TodoList'
 
 export default {
-  props: ['todos'],
-  name: 'app',
-  components: {
-    TodoList,
-  },
-  data() {
-    return {
-      todos: [{
-        title: 'Todo A',
-        project: 'Project A',
-        done: false,
-      },{
-        title: 'Todo B',
-        project: 'Project B',
-        done: true,
-      },{
-        title: 'Todo C',
-        project: 'Project C',
-        done: false,
-      },{
-        title: 'Todo D',
-        project: 'Project D',
-        done: false,
-      }],
-    };
-  },
+    props: ['todos'],
+    name: 'app',
+    components: {
+        TodoList,
+        CreateTodo,
+    },
+
+    data() {
+        return {
+            todos: [{
+                title: 'Todo A',
+                project: 'Project A',
+                done: false,
+            },{
+                title: 'Todo B',
+                project: 'Project B',
+                done: true,
+            },{
+                title: 'Todo C',
+                project: 'Project C',
+                done: false,
+            },{
+                title: 'Todo D',
+                project: 'Project D',
+                done: false,
+            }],
+            };
+        },
+    methods: {
+        addTodo(title) {
+            this.todos.push({
+                title, 
+                done: false,
+            });
+        },
+    },
 };
 </script>
-
-<style>
-</style>
